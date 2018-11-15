@@ -2,6 +2,7 @@ import $ from 'jquery';
 import './navbar.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import todo from './2do.png';
 
 const navbarEvents = () => {
   $('.nav-link').on('click', (e) => {
@@ -24,8 +25,8 @@ const navbarEvents = () => {
 
 const createNavbar = () => {
   const domString = `
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#">Jonathan's To-Do List</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><img src="${todo}"/></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
