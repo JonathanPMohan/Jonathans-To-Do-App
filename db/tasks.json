@@ -1,0 +1,24 @@
+{
+  "tasks": {
+    "task1": {
+      "id": "task1",
+      "task": "Beat Mike Tyson on Mike Tyson's Punch Out",
+      "isCompleted": false
+    },
+    "task2": {
+      "id": "task2",
+      "task": "Binge watch Breaking Bad or solve world hunger?",
+      "isCompleted": false
+    },
+    "task3": {
+      "id": "task3",
+      "task": "Change cat litter...it stinks.",
+      "isCompleted": false
+    },
+    "task4": {
+      "id": "task4",
+      "task": "Walk the dog?? wait.. I don't have a dog.",
+      "isCompleted": false
+    }
+  }
+}
