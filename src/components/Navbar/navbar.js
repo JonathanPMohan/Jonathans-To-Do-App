@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import todo from './2do.png';
 
+// Navbar Events //
 const navbarEvents = () => {
   $('.nav-link').on('click', (e) => {
     console.log(e.target.id);
@@ -16,13 +17,16 @@ const navbarEvents = () => {
     } else if (e.target.id === 'navbar-button-todo') {
       $('#auth').hide();
       $('#todoList').show();
+      $('#tasks-container').show();
     } else {
       $('#auth').show();
       $('#todoList').hide();
+      $('#tasks-container').hide();
     }
   });
 };
 
+// NavBar Builder //
 const createNavbar = () => {
   const domString = `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
