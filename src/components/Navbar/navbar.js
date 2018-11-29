@@ -16,12 +16,16 @@ const navbarEvents = () => {
       });
     } else if (e.target.id === 'navbar-button-todo') {
       $('#auth').hide();
-      $('#todoList').show();
+      $('#tasks').show();
       $('#tasks-container').show();
+      $('#completed-tasks').show();
+      $('#button-container').hide();
     } else {
       $('#auth').show();
-      $('#todoList').hide();
+      $('#tasks').hide();
+      $('#button-container').hide();
       $('#tasks-container').hide();
+      $('#completed-tasks').hide();
     }
   });
 };

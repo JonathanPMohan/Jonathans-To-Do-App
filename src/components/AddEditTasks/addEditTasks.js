@@ -4,9 +4,10 @@ import initializeTasksPage from '../TasksPage/tasksPage';
 import './addEditTasks.scss';
 
 const inputBuilder = (task) => {
-  const inputField = `<div>
-                        <input class= "m-2" id="input-field" type="text" placeholder="Enter task here" value="${task.task}">
-                      </div>`;
+  const inputField = `
+  <div>
+  <input class= "m-2" id="input-field" type="text" placeholder="Enter task here" value="${task.task}">
+  </div>`;
   return inputField;
 };
 
@@ -23,9 +24,8 @@ const buildAddTask = () => {
     task: '',
   };
   let domString = '<div class="text-center m-4">';
-  domString += '<h2 class="m-2 add-new-task"> Add New Task </h2>';
+  domString += '<h3 class="m-2 add-new-task">Add To-Do</h3>';
   domString += inputBuilder(emptyTask);
-  // domString += '<button class="btn btn-primary m-2" id="add-task"> Save New Task</button>';
   domString += '</div>';
   $('#add-edit-task').html(domString).show();
   $('#tasks-container').show();
@@ -47,24 +47,13 @@ const addNewTask = (event) => {
   }
 };
 
-// $('body').on('keyup', '#input-field', (event) => {
-//   event.preventDefault();
-//   if (event.keyCode === 13 && event.target.value !== '') {
-//     // $('#add-task').click();
-//     addNewTask();
-//   }
-// });
-
-// $('body').on('click', '#show-task-input', buildAddTask);
-
 const showEditInput = (e) => {
   const idToEdit = e.target.dataset.editId;
   tasksData.getSingleTask(idToEdit)
     .then((singleTask) => {
       let domString = '<div class="text-center m-4">';
-      domString += '<h2 class="m-2 edit-task-heading"> Edit Task </h2>';
+      domString += '<h3 class="m-2 edit-task-heading"> Edit Task </h3>';
       domString += inputBuilder(singleTask);
-      domString += `<button class="btn btn-primary m-2" id="edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
       domString += '</div>';
       $('#add-edit-task').html(domString).show();
       $('#tasks-container').show();
@@ -87,20 +76,11 @@ const taskUpdate = (e) => {
     });
 };
 
-$('body').on('click', '.edit-button', showEditInput);
-
-// $('body').on('keyup', '#input-field', (event) => {
-//   event.preventDefault();
-//   if (event.keyCode === 13) {
-//     $('#edit-task').click();
-//   }
-// });
-
-$('body').on('click', '#edit-task', taskUpdate);
-
 const bindEvents = () => {
   $('body').on('click', '#show-task-input', buildAddTask);
   $('body').on('keyup', '#input-field', addNewTask);
+  $('body').on('click', '.edit-button', showEditInput);
+  $('body').on('click', '#edit-task', taskUpdate);
 };
 
 export default { bindEvents };
