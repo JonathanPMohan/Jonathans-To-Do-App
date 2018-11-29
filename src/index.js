@@ -16,7 +16,6 @@ const initializeApp = () => {
   loginButton();
   authHelpers.checkLoginStatus(tasksPage);
   addEditTasks.bindEvents();
-  // $('#show-task-input').on('click', showAddInput);
 };
 
 initializeApp();
