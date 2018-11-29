@@ -2,23 +2,26 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';
 
-const checkLoginStatus = () => {
+const checkLoginStatus = (initializeTasksPage) => {
   firebase.auth().onAuthStateChanged((user) => {
     console.log(user.displayName);
     if (user) {
-      $('#todoList').show();
+      $('#tasks').show();
       $('#auth').hide();
-      $('#navbar-button-auth').show();
-      $('navbar-button-todo').show();
-      $('navbar-button-logout').show();
-    } else {
-      $('#todoList').hide();
-      $('#auth').show();
       $('#navbar-button-auth').hide();
-      $('navbar-button-todo').show();
+      $('navbar-button-tasks').show();
+      $('navbar-button-logout').show();
+      initializeTasksPage();
+    } else {
+      $('#tasks').hide();
+      $('#auth').show();
+      $('#navbar-button-auth').show();
+      $('navbar-button-tasks').hide();
       $('navbar-button-logout').hide();
     }
   });
 };
 
-export default checkLoginStatus;
+const getCurrentUid = () => firebase.auth().currentUser.uid;
+
+export default { checkLoginStatus, getCurrentUid };
