@@ -46,12 +46,13 @@ const addNewTask = () => {
 
 $('body').on('keyup', '#input-field', (event) => {
   event.preventDefault();
-  if (event.keyCode === 13) {
-    $('#add-task').click();
+  if (event.keyCode === 13 && event.target.value !== '') {
+    // $('#add-task').click();
+    addNewTask();
   }
 });
 
-$('body').on('click', '#show-task-input', addNewTask);
+// $('body').on('click', '#show-task-input', buildAddTask);
 
 const showEditInput = (e) => {
   const idToEdit = e.target.dataset.editId;
@@ -94,4 +95,8 @@ $('body').on('keyup', '#input-field', (event) => {
 
 $('body').on('click', '#edit-task', taskUpdate);
 
-export default buildAddTask;
+const bindEvents = () => {
+  $('body').on('click', '#show-task-input', buildAddTask);
+};
+
+export default bindEvents;

@@ -15,7 +15,8 @@ const initializeApp = () => {
   navbar();
   loginButton();
   authHelpers.checkLoginStatus(tasksPage);
-  $('#show-task-input').on('click', showAddInput);
+  showAddInput();
+  // $('#show-task-input').on('click', showAddInput);
 };
 
 initializeApp();
