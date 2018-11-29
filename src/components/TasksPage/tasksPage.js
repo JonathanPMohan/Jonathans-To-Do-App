@@ -9,11 +9,11 @@ const printAllTasks = (tasksArray) => {
   tasksArray.forEach((task) => {
     if (task.isCompleted === false) {
       domString += `<div class="input-group-text task d-flex">
-                      <input type="checkbox">
-                      <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
-                      <input class="edit-button pt-1 ml-2" data-edit-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/230/230330.svg" width="25px" height="45px"></input>
-                      <input class="delete-button pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
-                      </div>`;
+        <input type="checkbox">
+        <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
+         <input class="edit-button pt-1 ml-2" data-edit-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/230/230330.svg" width="25px" height="45px"></input>
+         <input class="delete-button pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
+            </div>`;
       $('#tasks').html(domString);
     }
   });
