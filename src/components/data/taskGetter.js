@@ -1,26 +1,50 @@
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys.json';
 
-const baseUrl = apiKeys.firebaseKeys.databaseURL;
+const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const tasksData = () => new Promise((resolve, reject) => {
-  axios
-    .get(`${baseUrl}/tasks.json`)
-    .then((result) => {
-      const allTasksObject = result.data;
-      const allTasksArray = [];
-      if (allTasksObject != null) {
+const getAllTasks = () => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/tasks.json`)
+    .then((results) => {
+      const allTasksObject = results.data;
+      const tasksArray = [];
+      if (allTasksObject !== null) {
         Object.keys(allTasksObject).forEach((taskId) => {
           const newTask = allTasksObject[taskId];
           newTask.id = taskId;
-          allTasksArray.push(newTask);
+          tasksArray.push(newTask);
         });
       }
-      resolve(allTasksArray);
-    })
-    .catch((err) => {
-      reject(err);
+      resolve(tasksArray);
+    }).catch((error) => {
+      reject(error);
     });
 });
 
-export default tasksData;
+const getSingleTask = taskId => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/tasks/${taskId}.json`)
+    .then((result) => {
+      const singleTask = result.data;
+      singleTask.id = taskId;
+      resolve(singleTask);
+    }).catch((error) => {
+      reject(error);
+    });
+});
+
+
+const addNewTask = taskObject => axios.post(`${firebaseUrl}/tasks.json`, JSON.stringify(taskObject));
+
+const deleteTask = taskId => axios.delete(`${firebaseUrl}/tasks/${taskId}.json`);
+
+const updateSingleTask = (taskObject, taskId) => axios.put(`${firebaseUrl}/tasks/${taskId}.json`, JSON.stringify(taskObject));
+
+
+export default {
+  getAllTasks,
+  getSingleTask,
+  updateSingleTask,
+  addNewTask,
+  deleteTask,
+
+};

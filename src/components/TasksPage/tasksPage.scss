@@ -1,30 +1,38 @@
 
-#todoList {
+#tasks {
   margin-top: 2%;
 
-}.icon {
-  padding: 10%;
-  margin-left: 50%;
+}
+
+#completed {
+  margin: 1%;
 }
 
 .task {
   background-color: black;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-right: 19%;
+  margin-left: 19%;
   border-radius: 18px;
   color: rgb(151, 150, 150);
-  margin: 2%;
-  margin-left: 14%;
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   padding-left: 2%;
-  padding-right: 2%;
-  max-width: 70%;
+  padding-right: 1%;
+  max-width: 100%;
   font-family: 'Questrial', sans-serif;
+}
+
+.task-desc {
+  padding-left: 2%;
 }
 
 .delete-button {
   margin-left: 15px;
+  padding: 1px;
 }
 
 .edit-button {
-  margin-left: 60px;
+  margin-left: 10px;
+  padding: 1px;
 }

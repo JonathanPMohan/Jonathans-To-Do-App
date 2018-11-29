@@ -40,7 +40,7 @@ const createNavbar = () => {
             <a id="navbar-button-auth" class="nav-link">Authentication</a>
           </li>
           <li class="nav-item">
-            <a id="navbar-button-todo" class="nav-link">To-Do</a>
+            <a id="navbar-button-tasks" class="nav-link">To-Do</a>
           </li>
           <li class="nav-item">
           <a id="navbar-button-logout" class="nav-link">Logout</a>
