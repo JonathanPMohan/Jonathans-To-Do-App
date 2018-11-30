@@ -5,14 +5,14 @@ import './addEditTasks.scss';
 
 const inputBuilder = (task) => {
   const inputField = `<div>
-  <input class= "m-2" id="input-field" type="text" placeholder="Enter task here" value="${task.task}">
+  <input class= "m-2" id="inputField" type="text" placeholder="Enter task here" value="${task.task}">
                       </div>`;
   return inputField;
 };
 
 const gettingTaskFromInput = () => {
   const task = {
-    task: $('#input-field').val(),
+    task: $('#inputField').val(),
     isCompleted: false,
   };
   return task;
@@ -26,9 +26,9 @@ const buildAddTask = () => {
   domString += '<h3 class="m-2 add-new-task">Add New To-Do</h3>';
   domString += inputBuilder(emptyTask);
   domString += '</div>';
-  $('#add-edit-task').html(domString).show();
-  $('#tasks-container').hide();
-  $('#input-field').focus();
+  $('#addEditTask').html(domString).show();
+  $('#tasksContainer').hide();
+  $('#inputField').focus();
 };
 
 const addNewTask = (event) => {
@@ -37,8 +37,8 @@ const addNewTask = (event) => {
     const newTask = gettingTaskFromInput();
     tasksData.addNewTask(newTask)
       .then(() => {
-        $('#add-edit-task').html('').show();
-        $('#tasks-container').show();
+        $('#addEditTask').html('').show();
+        $('#tasksContainer').show();
         initializeTasksPage();
       }).catch((error) => {
         console.error(error);
@@ -54,9 +54,9 @@ const showEditInput = (e) => {
       domString += '<h3 class="m-2 edit-task-heading">Edit To-Do</h3>';
       domString += inputBuilder(singleTask);
       domString += '</div>';
-      $('#add-edit-task').html(domString).show();
-      $('#tasks-container').hide();
-      $('#input-field').focus();
+      $('#addEditTask').html(domString).show();
+      $('#tasksContainer').hide();
+      $('#inputField').focus();
     }).catch((error) => {
       console.error(error);
     });
@@ -67,8 +67,8 @@ const taskUpdate = (e) => {
   const taskId = e.target.dataset.singleEditId;
   tasksData.updateSingleTask(updateTask, taskId)
     .then(() => {
-      $('#add-edit-task').html('').hide();
-      $('#tasks-container').show();
+      $('#addEditTask').html('').hide();
+      $('#tasksContainer').show();
       initializeTasksPage();
     }).catch((error) => {
       console.error(error);
@@ -76,9 +76,9 @@ const taskUpdate = (e) => {
 };
 
 const bindEvents = () => {
-  $('body').on('click', '#show-task-input', buildAddTask);
-  $('body').on('keyup', '#input-field', addNewTask);
-  $('body').on('click', '.edit-button', showEditInput);
+  $('body').on('click', '#triggerTaskInput', buildAddTask);
+  $('body').on('keyup', '#inputField', addNewTask);
+  $('body').on('click', '.editButton', showEditInput);
   $('body').on('click', '#edit-task', taskUpdate);
 };
 
