@@ -5,14 +5,14 @@ import authHelpers from '../helpers/authHelpers';
 
 const printAllTasks = (tasksArray) => {
   let domString = '';
-  domString += '<h5 class="header text-center">Tasks </h5>';
+  domString += '<h5 class="header text-center">To-Do List</h5>';
   tasksArray.forEach((task) => {
     if (task.isCompleted === false) {
       domString += `<div class="input-group-text task d-flex">
         <input type="checkbox">
-        <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
-         <input class="edit-button pt-1 ml-2" data-edit-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/230/230330.svg" width="25px" height="45px"></input>
-         <input class="delete-button pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
+        <h4 class="taskInfo m-1" data-task-id=${task.id}>${task.task}</h4>
+         <input class="editButton pt-1 ml-2" data-edit-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/230/230330.svg" width="25px" height="45px"></input>
+         <input class="deleteButton pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
             </div>`;
       $('#tasks').html(domString);
     }
@@ -21,15 +21,15 @@ const printAllTasks = (tasksArray) => {
 
 const printCompletedTasks = (tasksArray) => {
   let domString = '';
-  domString += '<h5 class="header text-center">Completed Tasks </h5>';
+  domString += '<h5 class="header text-center">Done List</h5>';
   tasksArray.forEach((task) => {
     if (task.isCompleted === true) {
       domString += `<div class="input-group-text task d-flex">
         <input type="checkbox">
         <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
-         <input class="delete-button pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
+         <input class="deleteButton pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
             </div>`;
-      $('#completed-tasks').html(domString);
+      $('#completedTasks').html(domString);
     }
   });
 };
@@ -45,7 +45,7 @@ const tasksPage = () => {
     });
 };
 
-const gettingTaskFromList = (iscompleted, elementToUpdate) => {
+const getTaskFromList = (iscompleted, elementToUpdate) => {
   const task = {
     task: $(elementToUpdate).text(),
     isCompleted: iscompleted,
@@ -61,12 +61,12 @@ const completedTask = (e) => {
   const idToUpdate = elementToUpdate.dataset.taskId;
   const elementToDelete = $(e.target).next().next().children('input')[0];
   const idToDelete = elementToDelete.dataset.deleteId;
-  const updatedtaskObject = gettingTaskFromList(iscompleted, elementToUpdate);
+  const updatedtaskObject = getTaskFromList(iscompleted, elementToUpdate);
   tasksData.updateSingleTask(updatedtaskObject, idToUpdate)
     .then(() => {
       if (iscompleted) {
         const taskToMove = $(e.target).closest('.task').text();
-        $('#completed-tasks').append(`<div class="completed-task-text" id="${idToUpdate}-done">${taskToMove} <input class="delete-button-completed" data-completetask-id="${idToDelete}"type="image" src="https://cdn1.iconfinder.com/data/icons/color-bold-style/21/56-512.png" width="20px"></input></div>`);
+        $('#completedTasks').append(`<div class="completed-task-text" id="${idToUpdate}-done">${taskToMove} <input class="delete-button-completed" data-completetask-id="${idToDelete}"type="image" src="https://cdn1.iconfinder.com/data/icons/color-bold-style/21/56-512.png" width="20px"></input></div>`);
         $(elementToUpdate).css('text-decoration', 'line-through');
       } else {
         let incompleteTaskId = '#';
@@ -97,7 +97,7 @@ const deleteTask = (e) => {
     });
 };
 
-$('body').on('click', '.delete-button', deleteTask);
+$('body').on('click', '.deleteButton', deleteTask);
 
 // Delete from completed task and opentask
 $('body').on('click', '.delete-button-completed', (e) => {
