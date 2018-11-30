@@ -2,7 +2,6 @@ import 'bootstrap';
 import firebase from 'firebase/app';
 // import $ from 'jquery';
 import apiKeys from '../db/apiKeys.json';
-
 import './index.scss';
 import navbar from './components/Navbar/navbar';
 import loginButton from './components/Auth/auth';
@@ -14,8 +13,8 @@ const initializeApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   navbar();
   loginButton();
-  authHelpers.checkLoginStatus(tasksPage);
   addEditTasks.bindEvents();
+  authHelpers.checkLoginStatus(tasksPage);
 };
 
 initializeApp();

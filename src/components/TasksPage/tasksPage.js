@@ -19,11 +19,27 @@ const printAllTasks = (tasksArray) => {
   });
 };
 
+const printCompletedTasks = (tasksArray) => {
+  let domString = '';
+  domString += '<h5 class="header text-center">Completed Tasks </h5>';
+  tasksArray.forEach((task) => {
+    if (task.isCompleted === true) {
+      domString += `<div class="input-group-text task d-flex">
+        <input type="checkbox">
+        <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
+         <input class="delete-button pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
+            </div>`;
+      $('#completed-tasks').html(domString);
+    }
+  });
+};
+
 const tasksPage = () => {
   const uid = authHelpers.getCurrentUid();
   tasksData.getAllTasks(uid)
     .then((tasksArray) => {
       printAllTasks(tasksArray);
+      printCompletedTasks(tasksArray);
     }).catch((error) => {
       console.error('error in getting tasks', error);
     });
