@@ -1,15 +1,15 @@
 ## Jonathans-To-Do-App
 
 ### Description
-This is a to-do app with a list of unfinished tasks. When the user visits the app, the user can log in with Google authentication, and then create, edit, and delete tasks. This app makes full use of CRUD axios methods with Firebase.
+This is a to-do app with a list of unfinished tasks. When the user visits the app, the user can log in with Google authentication to create, edit, and delete tasks. This app makes full use of CRUD axios methods with Firebase.
 
 1. Login Page
 ![mainview](./screenshots/login.png)
 
-2. Tasks Page
+2. ToDo Page
 ![mainview](./screenshots/todo.png)
 
-3. Add Task Page
+3. Add ToDo Page
 ![mainview](./screenshots/addTodo.png)
 
 4. Edit Page
