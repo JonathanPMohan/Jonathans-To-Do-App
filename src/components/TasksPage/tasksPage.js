@@ -10,7 +10,7 @@ const printAllTasks = (tasksArray) => {
     if (task.isCompleted === false) {
       domString += `<div class="input-group-text task d-flex">
         <input type="checkbox">
-        <h4 class="taskInfo m-1" data-task-id=${task.id}>${task.task}</h4>
+        <h4 class="taskInfo m-1" data-task-id=${task.id}>${task.task}<h4>
          <input class="editButton pt-1 ml-2" data-edit-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/230/230330.svg" width="25px" height="45px"></input>
          <input class="deleteButton pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
             </div>`;
@@ -26,7 +26,7 @@ const printCompletedTasks = (tasksArray) => {
     if (task.isCompleted === true) {
       domString += `<div class="input-group-text task d-flex">
         <input type="checkbox">
-        <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}</h4>
+        <h4 class="task-desc m-1" data-task-id=${task.id}>${task.task}<h4>
          <input class="deleteButton pt-1" data-delete-id=${task.id} type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input>
             </div>`;
       $('#completedTasks').html(domString);
@@ -57,7 +57,7 @@ const completedTask = (e) => {
   const element = e.target;
   element.classList.toggle('checked');
   const iscompleted = $(element).hasClass('checked');
-  const elementToUpdate = $(e.target).siblings('p')[0];
+  const elementToUpdate = $(e.target).siblings('h4')[0];
   const idToUpdate = elementToUpdate.dataset.taskId;
   const elementToDelete = $(e.target).next().next().children('input')[0];
   const idToDelete = elementToDelete.dataset.deleteId;
