@@ -66,7 +66,7 @@ const completedTask = (e) => {
     .then(() => {
       if (iscompleted) {
         const taskToMove = $(e.target).closest('.task').text();
-        $('#completedTasks').append(`<div class="completed-task-text" id="${idToUpdate}-done">${taskToMove} <input class="delete-button-completed" data-completetask-id="${idToDelete}"type="image" src="https://cdn1.iconfinder.com/data/icons/color-bold-style/21/56-512.png" width="20px"></input></div>`);
+        $('#completedTasks').append(`<div class="completed-task-text" id="${idToUpdate}-done">${taskToMove} <input class="delete-button-completed" data-completetask-id="${idToDelete}"type="image" src="https://image.flaticon.com/icons/svg/248/248953.svg" width="30px" height="50px"></input></div>`);
         $(elementToUpdate).css('text-decoration', 'line-through');
       } else {
         let incompleteTaskId = '#';

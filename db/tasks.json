@@ -23,12 +23,12 @@
     "task5": {
       "id": "task5",
       "task": "This is a test. Repeat. Test.",
-      "isCompleted": true
+      "isCompleted": false
     },
     "task6": {
       "id": "task5",
       "task": "This is a test Also. Repeat. Test.",
-      "isCompleted": true
+      "isCompleted": false
     }
   }
 }
